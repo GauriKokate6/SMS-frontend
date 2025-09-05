@@ -187,47 +187,7 @@ tr.failing {
                 flex: 1 1 100%;
             }
         }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Student Management System</h1>
+ 
 
-        <!-- Add Student Form -->
-        <form id="addStudentForm">
-            <input type="text" id="name" placeholder="Name" required>
-            <input type="number" id="marks" placeholder="Marks" required>
-            <button type="submit">Add Student</button>
-        </form>
 
-        <!-- Search by Roll Number -->
-        <div class="search-roll-container">
-            <input type="number" id="searchRoll" placeholder="Search by Roll No">
-            <button onclick="searchStudent()">Search</button>
-            <button onclick="getAllStudents()">Reset</button>
-        </div>
-
-        <!-- Sort Buttons -->
-        <div class="sort-container">
-            <button onclick="sortByName()">Sort by Name</button>
-            <button onclick="sortByMarks()">Sort by Marks</button>
-        </div>
-
-        <!-- Students Table -->
-        <div class="table-wrapper">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Roll No</th>
-                        <th>Name</th>
-                        <th>Marks</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody id="studentsTable">
-                    <!-- Rows will be dynamically inserted -->
-                </tbody>
-            </table>
-        </div>
-    </div>
-
+   
