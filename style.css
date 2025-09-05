@@ -1,0 +1,233 @@
+/* ================= General Styling ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+    color: #333;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.container:hover {
+    transform: translateY(-2px);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #1e3a8a;
+    font-size: 2em;
+    letter-spacing: 1px;
+}
+
+/* ================= Form Styling ================= */
+form {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    background-color: #f8fafc;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+form input[type="text"],
+form input[type="number"] {
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    flex: 1 1 150px;
+    transition: all 0.2s;
+}
+
+form input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 5px rgba(37, 99, 235, 0.3);
+    outline: none;
+}
+
+form button {
+    padding: 12px 25px;
+    border: none;
+    background-color: #2563eb;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+form button:hover {
+    background-color: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+/* ================= Search & Sort ================= */
+.search-roll-container,
+.sort-container {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.search-roll-container input {
+    flex: 1 1 150px;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+}
+
+.search-roll-container button,
+.sort-container button {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    background-color: #f97316;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.search-roll-container button:hover,
+.sort-container button:hover {
+    background-color: #ea580c;
+    transform: translateY(-2px);
+}
+
+/* ================= Table Styling ================= */
+.table-wrapper {
+    overflow-x: auto;
+    border-radius: 12px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 500px;
+    font-size: 16px;
+}
+
+th, td {
+    padding: 15px 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #2563eb;
+    color: white;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+tr:nth-child(even) {
+    background-color: #f1f5f9;
+}
+
+tr:hover {
+    background-color: #dbeafe;
+    transition: 0.3s;
+}
+
+.actions button {
+    background-color: #10b981;
+    border: none;
+    padding: 6px 12px;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 5px;
+    transition: all 0.3s;
+}
+
+.actions button:hover {
+    background-color: #059669;
+    transform: translateY(-1px);
+}
+
+/* ================= Highlight Rows ================= */
+tr.top-scorer {
+    background-color: #d1fae5;
+    font-weight: bold;
+}
+
+tr.failing {
+    background-color: #fee2e2;
+    color: #b91c1c;
+}
+
+/* ================= Responsive Design ================= */
+ @media (max-width: 768px) {
+            form { flex-direction: column; }
+            .search-roll-container, .sort-container { flex-direction: column; }
+            th, td { font-size: 14px; padding: 10px; }
+        }
+
+        @media (max-width: 480px) {
+            body { padding: 10px; }
+            table { font-size: 12px; }
+            form input, form button, .search-roll-container input, .search-roll-container button, .sort-container button {
+                width: 100%;
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Student Management System</h1>
+
+        <!-- Add Student Form -->
+        <form id="addStudentForm">
+            <input type="text" id="name" placeholder="Name" required>
+            <input type="number" id="marks" placeholder="Marks" required>
+            <button type="submit">Add Student</button>
+        </form>
+
+        <!-- Search by Roll Number -->
+        <div class="search-roll-container">
+            <input type="number" id="searchRoll" placeholder="Search by Roll No">
+            <button onclick="searchStudent()">Search</button>
+            <button onclick="getAllStudents()">Reset</button>
+        </div>
+
+        <!-- Sort Buttons -->
+        <div class="sort-container">
+            <button onclick="sortByName()">Sort by Name</button>
+            <button onclick="sortByMarks()">Sort by Marks</button>
+        </div>
+
+        <!-- Students Table -->
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Roll No</th>
+                        <th>Name</th>
+                        <th>Marks</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="studentsTable">
+                    <!-- Rows will be dynamically inserted -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+

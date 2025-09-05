@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Student Management System</h1>
+
+    <!-- Add Student Form -->
+    <div class="form-container">
+        <h2>Add Student</h2>
+        <form id="addStudentForm">
+            <input type="text" id="name" placeholder="Name" required>
+            <input type="number" id="marks" placeholder="Marks" required>
+            <button type="submit">Add Student</button>
+        </form>
+    </div>
+
+    <!-- Search by Roll No -->
+<div class="search-roll-container">
+    <input type="number" id="rollSearchInput" placeholder="Search by Roll No">
+    <button onclick="searchByRollNo()">Search</button>
+    <button onclick="getAllStudents()">Reset</button>
+</div>
+
+<!-- Sort Buttons -->
+<div class="sort-container">
+    <button onclick="sortByName()">Sort by Name</button>
+    <button onclick="sortByMarks()">Sort by Marks</button>
+</div>
+
+
+    <!-- Students Table -->
+    <div class="table-container">
+        <h2>All Students</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Roll No</th>
+                    <th>Name</th>
+                    <th>Marks</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="studentsTable">
+                <!-- Students will be populated here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
