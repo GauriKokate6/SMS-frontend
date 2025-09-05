@@ -1,4 +1,4 @@
-const apiUrl = "http://localhost:8080/students";
+const apiUrl = "https://sms-backend-production-8759.up.railway.app/students";
 
 // Get all students and render table
 function getAllStudents() {
